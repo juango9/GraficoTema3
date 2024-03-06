@@ -1,0 +1,24 @@
+---
+title: "GraficoTema3"
+author: "GrupoE"
+date: "2024-03-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+A partir de la actualización diaria de datos covid accesible en el enlace https://covid.ourworldindata.org/data/owid-covid-data.csv genera un gráfico lo más parecido posible al siguiente (pero con datos hasta la fecha actual) donde se debe incluir a España, que se dibujará en color ROJO (con trazo continuo más grueso que el resto de países. 
+
+El gráfico se generará en un documento GraficoTema3.html y debe ser interactivo. También se entregará el gráfico en un  documento pdf  
+
+llamado GraficoTema3.pdf. Utiliza la librería ggplot.  En el título de la figura debe aparecer el nombre del grupo (Grupo ?)
+
+En primer lugar, cargaré los datos del fichero csv. que contiene la información que se desea gráficar y las librerías pertinentes para su importación.
+
+```{r}
+library(plotly)
+library(readr)
+owid_covid_data <- read_csv("data/owid-covid-data.csv")
+```
+
