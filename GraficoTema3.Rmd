@@ -41,7 +41,12 @@ countries_plot <- owid_covid_data[owid_covid_data$location %in% countries, ]
 
 #Una vez creado el fondo para la gráfica, voy a crear los puntos que representan el número de muertes por cada fecha en la que se tengan registros de defunciones.
 
-grafica1 <- ggplot(countries_plot, aes(x = date, y = new_deaths_smoothed_per_million, colour=location )) + geom_line() + scale_color_manual(values=c("United States" = "violet","Italy" = "cyan",  "France" = "orange", "Germany" = "green", "Canada" = "brown", "Japan" = "grey", "United Kingdom" = "pink", "Spain" = "red"))
+grafica1 <- ggplot(countries_plot, aes(x = date, y = new_deaths_smoothed_per_million, colour=location )) + geom_line() + scale_color_manual(values=c("United States" = "violet","Italy" = "cyan",  "France" = "orange", "Germany" = "green", "Canada" = "brown", "Japan" = "grey", "United Kingdom" = "pink", "Spain" = "red"))+ geom_line(data= subset(countries_plot, location=="Spain"),size=0.7) +
+scale_x_date(date_breaks = "365 days") + labs(title = "Grupo E", subtitle = "Year rolling average. For some countries the number of confirmed deaths is much lower than the true number of deaths. This is because of limited testing and challenges in the attribution of the cause of death ", x = "Date ", y = "Daily deaths per million people")
+grafica1
+
+grafica2 <- ggplotly(grafica1)
+grafica2
 ```
 
 
