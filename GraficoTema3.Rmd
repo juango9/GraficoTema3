@@ -23,3 +23,25 @@ owid_covid_data <- read_csv("data/owid-covid-data.csv")
 ```
 
 
+```{r}
+
+#Creamos un vector que contega los nombres de los paises que se desean representar en la gráfica añadiendo España.
+countries <- c("United States", "Italy", "France", "Germany", "Canada", "Japan", "United Kingdom", "Spain" )
+
+#Voy a filtrar el Data Frame que contiene toda la información de todos los paises para quedarme únicamente con los paises que me interesan. Para esto, miraremos en la columna location del Data Frame y lo compararé con mi vector que contiene los países que quiero representar en la gráfica.
+
+countries_plot <- owid_covid_data[owid_covid_data$location %in% countries, ]
+
+
+
+#Crearé en primer lugar la base para la gráfica. En el eje de las 'x' pondré la variable 'date' (como en la imagen de ejemplo se muestra), y en el eje de las 'y' representaré la varible 'new_deaths_per_million', la cual representa en número de muertes por millón debido al Covid-19. Con colour = 'location' asignatré que cada lugar tenga un color diferente para la mejor visualización de los datos. Con xlab e ylab le pondré nombre a los ejes de coordenadas.
+
+#base_grafica<-ggplot(countries_plot, aes(x = date, y = new_deaths_per_million, colour=location )) + xlab("Date") + ylab("Daily deaths per million people")
+#base_grafica
+
+#Una vez creado el fondo para la gráfica, voy a crear los puntos que representan el número de muertes por cada fecha en la que se tengan registros de defunciones.
+
+grafica1 <- ggplot(countries_plot, aes(x = date, y = new_deaths_smoothed_per_million, colour=location )) + geom_line() + scale_color_manual(values=c("United States" = "violet","Italy" = "cyan",  "France" = "orange", "Germany" = "green", "Canada" = "brown", "Japan" = "grey", "United Kingdom" = "pink", "Spain" = "red"))
+```
+
+
