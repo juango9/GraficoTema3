@@ -16,9 +16,5 @@ llamado GraficoTema3.pdf. Utiliza la librería ggplot.  En el título de la figu
 
 En primer lugar, cargaré los datos del fichero csv. que contiene la información que se desea gráficar y las librerías pertinentes para su importación.
 
-```{r}
-library(plotly)
-library(readr)
-owid_covid_data <- read_csv("data/owid-covid-data.csv")
-```
+
 
